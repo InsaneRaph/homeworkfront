@@ -1,0 +1,8 @@
+<h1>Home</h1>
+<p>Welcome {{currentUser.email}} </p>
+<div>
+    <ul>
+        <li *ngFor="let card of cards">{{card.id}} </li>
+    </ul>
+</div>
+<p><a [routerLink]="['/login']">Logout</a></p>
