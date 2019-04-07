@@ -1,10 +1,12 @@
-export interface CardScheme {
+export class CardScheme {
     id: number;
-    createdAt: string;
-    updatedAt: string;
     number: string;
     holder: string;
     expirationMonth: number;
     expirationYear: number;
     type: string;
+    crypto: string;
+
+    constructor() {
+    }
 }

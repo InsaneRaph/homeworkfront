@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from '../_services';
-import {CardSchemeService} from "../_services";
+import {CardSchemeService, UserService} from '../_services';
 import {CardScheme} from "../_models/cardScheme";
 
 @Component({templateUrl: 'home.component.html'})
@@ -17,5 +16,11 @@ export class HomeComponent implements OnInit {
         this.cardSchemeService.get().subscribe(cards => {
             this.cards = cards
         })
+    }
+
+    deleteCard(card: CardScheme) {
+        if (confirm(`Are you sure you to delete this card ${card.number}`)) {
+            this.cardSchemeService.delete(card.id).subscribe(value => this.cards.splice(this.cards.indexOf(card), 1));
+        }
     }
 }

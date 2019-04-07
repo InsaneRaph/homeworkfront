@@ -12,19 +12,22 @@ import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import {SignComponent} from "./sign";
+import {CardComponent, PaymentComponent} from "./card";
 
 @NgModule({
     imports: [
         BrowserModule,
         ReactiveFormsModule,
         HttpClientModule,
-        routing
+        routing,
     ],
     declarations: [
         AppComponent,
         HomeComponent,
         LoginComponent,
-        SignComponent
+        SignComponent,
+        CardComponent,
+        PaymentComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

@@ -16,8 +16,8 @@ export class CardSchemeService{
     }
 
     // delete user card
-    delete(cardNumber : number){
-        return this.http.get<any>(`${config.apiUrl}/api/card/${cardNumber}`);
+    delete(cardId: number){
+        return this.http.delete(`${config.apiUrl}/api/cards/${cardId}`);
     }
 
 }

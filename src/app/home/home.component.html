@@ -1,8 +1,29 @@
 <h1>Home</h1>
 <p>Welcome {{currentUser.email}} </p>
+
 <div>
-    <ul>
-        <li *ngFor="let card of cards">{{card.id}} </li>
-    </ul>
+    <h3> My cards</h3>
+    <p>
+        <button [routerLink]="['/card']" class="btn btn-primary"> Add a card</button>
+    </p>
+    <div class="creditCardDiv">
+        <div class="row" *ngFor="let card of cards">
+            <div class="col-sm">
+                {{card.number}}
+            </div>
+            <div class="col-sm-2">
+                <div *ngIf="card.type == 'MASTERCARD'; else elseBlock"><i class="fab fa-cc-mastercard"></i></div>
+                <ng-template #elseBlock><i class="fab fa-cc-visa"></i></ng-template>
+            </div>
+            <div class="col-sm">
+                <span style="margin-right: 10px">  <i class="fas fa-eye cursor" [routerLink]="'card/'+card.id+'/payments'" title="View transaction"></i> </span>
+                <span> <i class="fas fa-trash cursor" (click)="deleteCard(card)" title="Delete the card"></i></span>
+            </div>
+        </div>
+    </div>
 </div>
-<p><a [routerLink]="['/login']">Logout</a></p>
+
+<br>
+<p>
+    <button [routerLink]="['/login']" class="btn btn-danger">Logout</button>
+</p>

@@ -1,0 +1,22 @@
+
+<div>
+    <h3> My Payments</h3>
+
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Seller</th>
+            <th scope="col">Amount</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let payment of payments">
+
+            <td>{{ payment.date | date:'medium' }}</td>
+            <td>{{ payment.seller }}</td>
+            <td>{{ payment.amount }} €</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

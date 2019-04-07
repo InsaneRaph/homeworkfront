@@ -1,0 +1,82 @@
+<h2>Add a new digitalized card</h2>
+<form [formGroup]="cardForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+        <label for="number">Card number</label>
+        <input type="text" formControlName="number" class="form-control"
+               [ngClass]="{ 'is-invalid': submitted && f.number.errors }"/>
+        <div *ngIf="submitted && f.number.errors" class="invalid-feedback">
+            <div>Require a valid Card number</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="holder">Card holder</label>
+        <input type="text" formControlName="holder" class="form-control"
+               [ngClass]="{ 'is-invalid': submitted && f.holder.errors }"/>
+        <div *ngIf="submitted && f.holder.errors" class="invalid-feedback">
+            <div *ngIf="f.holder.errors.required">Holder is required
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="crypto">CCV</label>
+        <input type="text" formControlName="crypto" class="form-control"
+               [ngClass]="{ 'is-invalid': submitted && f.crypto.errors }"/>
+        <div *ngIf="submitted && f.crypto.errors" class="invalid-feedback">
+            <div>Require a valid ccv</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Expiration</label>
+        <select formControlName="expirationMonth" class="custom-select"
+                [ngClass]="{ 'is-invalid': submitted && f.number.errors }">
+            <option selected value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+            <option value="8">August</option>
+            <option value="9">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+        </select>
+        <select formControlName="expirationYear" class="custom-select"
+                [ngClass]="{ 'is-invalid': submitted && f.number.errors }">
+            <option value="2019"> 2019</option>
+            <option selected value="2020"> 2020</option>
+            <option value="2021"> 2021</option>
+            <option value="2022"> 2022</option>
+            <option value="2023"> 2023</option>
+            <option value="2024"> 2024</option>
+        </select>
+        <div *ngIf="submitted && (f.expirationYear.errors || f.expirationMonth.errors) " class="invalid-feedback">
+            <div>Expiration is required
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="type">Card Type</label>
+        <select formControlName="type" class="custom-select" [ngClass]="{ 'is-invalid': submitted && f.number.errors }">
+            <option selected value="VISA">Visa</option>
+            <option value="MASTERCARD">Mastercard</option>
+        </select>
+        <div *ngIf="submitted && f.type.errors" class="invalid-feedback">
+            <div>Please select a card type
+            </div>
+        </div>
+
+    </div>
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">Add</button>
+        <img width="30px" height="30px" *ngIf="loading" src="https://myaccount.wigan.gov.uk/web/Images/loader.gif"/>
+    </div>
+    <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+</form>
+
+
+
